@@ -9,6 +9,7 @@ import AuthLayout from '@/layouts/AuthLayout'
 // Pages
 import HomePage from '@/pages/Homepage'
 import NotFoundPage from '@/pages/NotFound'
+import Schedule from './pages/Schedule'
 
 // Auth
 import { withAuth } from '@/services/withAuth'
@@ -20,22 +21,17 @@ const App: React.FC = () => {
   return (
     <BrowserRouter>
       <Routes>
-        {/* Public routes với MainLayout */}
-        <Route element={<MainLayout />}>
-          <Route path='*' element={<NotFoundPage />} />
-        </Route>
-
-        {/* Auth routes với AuthLayout */}
         <Route element={<AuthLayout />}>
           <Route path='/login' element={<LoginPage />} />
         </Route>
-
-        {/* Protected routes với MainLayout */}
-        <Route>
+        <Route element={<MainLayout />}>
           <Route path='/' element={<ProtectedHomepage />} />
-          {/* <Route path='/login' element={<ProtectedLoginPage />} /> */}
-          {/* <Route path='/schedule' element={<ProtectedSchedulePage />} />
-          <Route path='/profile' element={<ProtectedProfilePage />} /> */}
+        </Route>
+        <Route element={<MainLayout />}>
+          <Route path='*' element={<NotFoundPage />} />
+        </Route>
+        <Route element={<MainLayout />}>
+          <Route path='/schedule' element={<Schedule />} />
         </Route>
       </Routes>
     </BrowserRouter>

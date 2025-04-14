@@ -45,7 +45,7 @@ export async function logout(): Promise<boolean> {
       try {
         // Gọi API logout (có thể bỏ qua lỗi nếu có)
         await axios.post(
-          'http://localhost:3000/api/auth/logout',
+          'http://103.232.121.169/api/auth/logout',
           {},
           {
             headers: {

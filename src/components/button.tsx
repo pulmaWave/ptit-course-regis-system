@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   const variantClasses =
     variant === 'outline'
       ? 'border border-input bg-background hover:bg-accent hover:text-accent-foreground'
-      : 'bg-red-500 text-primary-foreground hover:bg-red-600 focus:bg-red-'
+      : 'bg-red-600 text-primary-foreground hover:bg-red-500 focus:bg-red-'
   const sizeClasses = size === 'sm' ? 'h-9 px-3 text-xs' : 'h-10 py-2 px-4'
 
   return (

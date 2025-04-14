@@ -4,8 +4,8 @@ import Badge from './badge'
 import Button from '../button'
 import { useState } from 'react'
 
-const Course = (props: CourseType) => {
-  const course = props
+const Course = (props: { course: CourseType; regisTime?: boolean }) => {
+  const { course, regisTime } = props
 
   const [selectedCourses, setSelectedCourses] = useState<string[]>([])
 
@@ -27,23 +27,25 @@ const Course = (props: CourseType) => {
             </div>
             <Badge>{course.type}</Badge>
           </div>
-          <Button
-            variant={
-              selectedCourses.includes(course.id) ? 'default' : 'outline'
-            }
-            size='sm'
-            onClick={() => toggleCourseSelection(course.id)}
-          >
-            {selectedCourses.includes(course.id) ? (
-              <>
-                <Check className='mr-1 h-4 w-4' /> Đã chọn
-              </>
-            ) : (
-              <>
-                <Plus className='mr-1 h-4 w-4' /> Chọn
-              </>
-            )}
-          </Button>
+          {regisTime && (
+            <Button
+              variant={
+                selectedCourses.includes(course.id) ? 'default' : 'outline'
+              }
+              size='sm'
+              onClick={() => toggleCourseSelection(course.id)}
+            >
+              {selectedCourses.includes(course.id) ? (
+                <>
+                  <Check className='mr-1 h-4 w-4' /> Đã chọn
+                </>
+              ) : (
+                <>
+                  <Plus className='mr-1 h-4 w-4' /> Chọn
+                </>
+              )}
+            </Button>
+          )}
         </div>
         <div className='text-xs text-muted-foreground mt-1'>
           Mã môn: {course.id} | TC: {course.credits}

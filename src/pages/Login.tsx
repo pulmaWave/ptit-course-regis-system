@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { login } from '@/services/auth'
 import { checkAuthStatus } from '@/services/checkAuthStatus'
+import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 const LoginPage: React.FC = () => {
   const [username, setUsername] = useState('')
@@ -17,7 +19,6 @@ const LoginPage: React.FC = () => {
 
     try {
       const success = await login(username, password)
-      console.log(success)
       if (success) {
         navigate('/')
       } else {
